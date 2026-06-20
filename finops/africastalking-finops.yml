@@ -1,0 +1,129 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Africa's Talking
+providerId: africastalking
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Communications
+- SMS
+- USSD
+- Voice
+- Airtime
+- Mobile Data
+- Payments
+- Africa
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Africa's Talking spend. Africa's Talking is prepaid and
+  usage-metered: an account wallet is topped up and drawn down per SMS sent,
+  per USSD session, per Voice minute/leg, per Airtime and Mobile Data
+  disbursement, and per Payments transaction fee. Per-unit rates vary by
+  country and carrier and are quoted in local currency, so unit costs are not
+  reconciled here.
+notes: >-
+  Per-country, per-carrier rates change frequently; pull them from the pricing
+  pages and the account dashboard during reconciliation. Multi-currency wallet
+  balances complicate FOCUS BillingCurrency normalization.
+sources:
+- https://africastalking.com/pricing
+- https://developers.africastalking.com
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Africa's Talking
+serviceCategory: Communications
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Prepaid
+  billingCurrency: Multi-Currency
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Africa's Talking
+  ServiceCategory: Communications
+  ProviderName: Africa's Talking
+  PublisherName: Africa's Talking
+  InvoiceIssuerName: Africa's Talking
+  BillingCurrency: Local (varies by country)
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: sms_messages
+  description: SMS messages sent, billed per message at a per-country, per-carrier rate.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+  - country
+  - shortCode
+- name: premium_sms_messages
+  description: Premium SMS messages with revenue share, billed per message.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+  - country
+  - keyword
+- name: ussd_sessions
+  description: USSD sessions billed per session by country and short code.
+  unit: sessions
+  aggregation: sum
+  dimensions:
+  - account
+  - country
+  - serviceCode
+- name: voice_minutes
+  description: Voice usage billed per minute or per leg by country and direction.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - country
+  - direction
+- name: airtime_value
+  description: Airtime distributed, billed at face value plus carrier margin.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - country
+  - carrier
+- name: mobile_data_bundles
+  description: Mobile data bundles disbursed, billed per bundle by quantity and validity.
+  unit: bundles
+  aggregation: sum
+  dimensions:
+  - account
+  - country
+  - carrier
+- name: payments_transaction_fees
+  description: Payments transaction fees (percentage or flat) per mobile money transaction.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - country
+  - provider
+principles:
+- name: Visibility
+  description: Pull wallet top-up and usage statements per product and country from the dashboard.
+- name: Allocation
+  description: Use distinct usernames/API keys and product names per workload to map spend to cost centers.
+- name: Optimization
+  description: Use dedicated short codes for high-volume SMS, enqueue large batches, and select cheaper carriers/countries where possible.
+- name: Accountability
+  description: Monitor multi-currency wallet balances and review per-country per-unit burn against budget regularly.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

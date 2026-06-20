@@ -1,0 +1,146 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Africa's Talking
+providerId: africastalking
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Communications
+- SMS
+- USSD
+- Voice
+- Airtime
+- Mobile Data
+- Payments
+- Africa
+- Plans
+description: >-
+  Africa's Talking uses prepaid, usage-based pricing. Customers top up an
+  account wallet and pay per unit consumed: per SMS sent, per USSD session,
+  per minute or per call leg for Voice, a percentage or flat transaction fee
+  for Payments, and the face value plus margin for Airtime and Mobile Data.
+  Per-unit rates vary by country and carrier and are quoted in local currency,
+  so they are not reconciled here. There are no fixed Free / Pro / Enterprise
+  tiers; volume and enterprise rates are negotiated with sales.
+notes: >-
+  Per-country, per-carrier per-unit rates change frequently and are published
+  on the Africa's Talking pricing and billing pages and surfaced in the
+  account dashboard. Capture exact rates per country on reconciliation.
+sources:
+- https://africastalking.com/pricing
+- https://developers.africastalking.com
+- https://help.africastalking.com
+plans:
+- id: africastalking-pay-as-you-go
+  name: Pay-as-you-go
+  type: usage
+  description: >-
+    Prepaid wallet metered per unit across all products. Rates vary by
+    country and carrier; values below are model placeholders pending
+    per-country reconciliation.
+  entries:
+  - label: SMS (per message)
+    name: sms
+    type: usage
+    metric: messages
+    limit: -1
+    timeFrame: month
+    geo: per-country
+    unit: 1
+    price: per-message rate varies by country (see pricing page)
+    userMultiplied: false
+  - label: Premium SMS (per message)
+    name: premium_sms
+    type: usage
+    metric: messages
+    limit: -1
+    timeFrame: month
+    geo: per-country
+    unit: 1
+    price: per-message rate with revenue share, varies by short code and country
+    userMultiplied: false
+  - label: USSD (per session)
+    name: ussd
+    type: usage
+    metric: sessions
+    limit: -1
+    timeFrame: month
+    geo: per-country
+    unit: 1
+    price: per-session rate varies by country and shared/dedicated code
+    userMultiplied: false
+  - label: Voice (per minute)
+    name: voice
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: per-country
+    unit: 1
+    price: per-minute / per-leg rate varies by country and inbound/outbound
+    userMultiplied: false
+  - label: Airtime (face value + margin)
+    name: airtime
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: per-country
+    unit: 1
+    price: face value of airtime plus carrier margin, varies by country
+    userMultiplied: false
+  - label: Mobile Data (per bundle)
+    name: mobile_data
+    type: usage
+    metric: bundles
+    limit: -1
+    timeFrame: month
+    geo: per-country
+    unit: 1
+    price: bundle cost varies by quantity, validity, country, and carrier
+    userMultiplied: false
+  - label: Payments (per transaction)
+    name: payments
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: per-country
+    unit: 1
+    price: percentage or flat transaction fee, varies by rail and country
+    userMultiplied: false
+  elements:
+  - name: SMS
+  - name: Premium SMS
+  - name: USSD
+  - name: Voice
+  - name: Airtime
+  - name: Mobile Data
+  - name: Payments
+- id: africastalking-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Negotiated volume rates, dedicated short codes and sender IDs, account
+    management, and SLAs for high-volume senders. Contact Africa's Talking
+    sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: per-country
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Dedicated Short Codes
+  - name: Negotiated Volume Rates
+  - name: Account Management and SLAs
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

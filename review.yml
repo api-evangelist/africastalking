@@ -1,0 +1,120 @@
+aid: africastalking
+name: Africa's Talking
+review:
+  question: Does Africa's Talking expose a documented public WebSocket or streaming API?
+  answer: false
+  date: '2026-06-20'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Africa's Talking is event-driven but over HTTP callbacks (webhooks), not
+    a streaming transport. The platform POSTs events to customer-hosted
+    callback URLs (USSD session steps, incoming/outgoing Voice events,
+    SMS delivery reports, inbound SMS, and Payments notifications). No
+    WebSocket (ws/wss) and no HTTP Server-Sent Events (SSE) stream is
+    documented. Because there is no SSE or WebSocket surface in scope, no
+    AsyncAPI document was authored. The callback/webhook contracts are
+    captured below and in apis.yml rather than in AsyncAPI.
+findings:
+  summary: |
+    Africa's Talking exposes only REST (HTTPS) request/response endpoints for
+    outbound actions, plus inbound HTTP callbacks (webhooks) for events.
+    Outbound endpoints span multiple hosts: messaging, airtime, and premium
+    SMS subscriptions under https://api.africastalking.com/version1; voice
+    under https://voice.africastalking.com; mobile data under
+    https://bundles.africastalking.com; and payments under
+    https://payments.africastalking.com. Sandbox hosts insert ".sandbox.".
+    Authentication is an apiKey header plus a username parameter. The Voice
+    product is callback-driven: incoming and outgoing calls trigger an HTTP
+    POST to your registered callback URL, and you reply with Voice XML actions
+    (Say, Play, GetDigits, Dial, Record, Enqueue, Dequeue, Redirect, Reject).
+    USSD is likewise callback-driven with CON/END plain-text responses. No
+    bidirectional or streaming socket transport is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.africastalking.com/version1
+      documented: true
+      note: Messaging, premium SMS subscriptions, checkout token, and airtime.
+    - protocol: REST
+      scheme: https
+      baseURL: https://voice.africastalking.com
+      documented: true
+      note: Voice call, queueStatus, mediaUpload.
+    - protocol: REST
+      scheme: https
+      baseURL: https://bundles.africastalking.com
+      documented: true
+      note: Mobile data bundle disbursement.
+    - protocol: REST
+      scheme: https
+      baseURL: https://payments.africastalking.com
+      documented: true
+      note: Mobile checkout (C2B), B2C, and B2B mobile money.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: >-
+        Inbound HTTP POST callbacks to customer URLs for USSD sessions, Voice
+        call events, SMS delivery reports, incoming SMS, and Payments
+        notifications. Customer-hosted; not a provider streaming endpoint.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented for any Africa's Talking product as of the review date.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No HTTP Server-Sent Events stream is documented.
+  endpointsConfirmedRest:
+    - POST https://api.africastalking.com/version1/messaging
+    - GET  https://api.africastalking.com/version1/messaging
+    - POST https://api.africastalking.com/checkout/token/create
+    - POST https://api.africastalking.com/version1/subscription/create
+    - POST https://api.africastalking.com/version1/subscription/delete
+    - GET  https://api.africastalking.com/version1/subscription
+    - POST https://api.africastalking.com/version1/airtime/send
+    - POST https://voice.africastalking.com/call
+    - POST https://voice.africastalking.com/queueStatus
+    - POST https://voice.africastalking.com/mediaUpload
+    - POST https://bundles.africastalking.com/mobile/data/request
+    - POST https://payments.africastalking.com/mobile/checkout/request
+    - POST https://payments.africastalking.com/mobile/b2c/request
+    - POST https://payments.africastalking.com/mobile/b2b/request
+  callbacks:
+    - name: USSD Callback
+      direction: inbound
+      note: AT POSTs sessionId, serviceCode, phoneNumber, text; respond with CON or END plain text.
+    - name: Voice Callback
+      direction: inbound
+      note: AT POSTs call events; respond with Voice XML (Say, Play, GetDigits, Dial, Record, Enqueue).
+    - name: SMS Delivery Report
+      direction: inbound
+      note: AT POSTs id, status, phoneNumber, networkCode to your delivery report URL.
+    - name: Incoming SMS
+      direction: inbound
+      note: AT POSTs from, to, text, date, id, linkId for messages to your short codes.
+    - name: Payment Notification
+      direction: inbound
+      note: AT POSTs transaction status events to your payment validation/notification URLs.
+sources:
+  - url: https://developers.africastalking.com
+    type: Documentation
+    note: Product docs list REST endpoints and callback contracts; no WebSocket.
+  - url: https://developers.africastalking.com/docs/voice/overview
+    type: Documentation
+    note: Voice is callback-driven with Voice XML responses, not a socket stream.
+  - url: https://developers.africastalking.com/docs/ussd/overview
+    type: Documentation
+    note: USSD is callback-driven with CON/END plain-text responses.
+  - url: https://help.africastalking.com/en/articles/2232953-what-are-the-africa-s-talking-api-endpoints
+    type: Documentation
+    note: Help center enumerates production and sandbox endpoint hosts per product.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE streaming surface exists, so no AsyncAPI document was
+    created. The event surface is HTTP webhooks (callbacks) to customer URLs,
+    documented here under callbacks and reflected in the API descriptions in
+    apis.yml.

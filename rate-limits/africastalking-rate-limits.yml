@@ -1,0 +1,72 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Africa's Talking
+providerId: africastalking
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Communications
+- SMS
+- USSD
+- Voice
+- Airtime
+- Mobile Data
+- Payments
+- Africa
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Africa's Talking throughput is governed primarily by carrier-imposed
+  delivery rates and per-account messaging caps rather than a single published
+  numeric API rate limit. SMS throughput depends on whether you use a shared or
+  dedicated short code and on telco throttling; large batches are buffered via
+  the enqueue option. Voice concurrency, payments velocity, and airtime limits
+  are bounded by carrier rules and account standing. Specific numeric limits
+  are not published as a single table and are not reconciled in this artifact.
+notes: >-
+  Confirm per-product throughput, short code capacity, enqueue behavior, and
+  any account-level caps with Africa's Talking support or your account manager
+  on reconciliation. Honor delivery report callbacks to track throttling.
+sources:
+- https://developers.africastalking.com
+- https://help.africastalking.com
+- https://africastalking.com/sms
+responseCodes:
+  throttled: 429
+limits:
+- name: SMS Throughput
+  scope: account
+  metric: messages_per_second
+  limit: see provider documentation
+  notes: Bounded by carrier delivery rates and shared vs dedicated short code capacity.
+- name: Bulk SMS Enqueue
+  scope: account
+  metric: messages
+  limit: buffered
+  notes: Set enqueue=1 to buffer very large outbound batches for paced delivery.
+- name: USSD Sessions
+  scope: account
+  metric: concurrent_sessions
+  limit: see provider documentation
+  notes: Session concurrency depends on short code provisioning and carrier limits.
+- name: Voice Concurrency
+  scope: account
+  metric: concurrent_calls
+  limit: see provider documentation
+  notes: Concurrent channels depend on registered numbers and carrier capacity.
+- name: Payments Velocity
+  scope: account
+  metric: transactions
+  limit: see provider documentation
+  notes: Payment throughput bounded by mobile money provider rules and account wallet balance.
+policies:
+- name: Carrier-Governed Throughput
+  description: Effective rate limits are set by downstream mobile carriers; dedicated short codes raise SMS throughput.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on 429 responses and honor delivery report callbacks.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

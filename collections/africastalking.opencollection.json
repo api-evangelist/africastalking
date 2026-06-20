@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Africa's Talking API",
+    "version": "version1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "in": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send SMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/messaging",
+            "body": {
+              "type": "form-urlencoded",
+              "data": "username={{username}}&to=+254711XXXYYY&message=Hello&bulkSMSMode=1"
+            }
+          },
+          "docs": "Send single or bulk SMS to one or more recipients."
+        },
+        {
+          "info": {
+            "name": "Fetch Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.africastalking.com/version1/messaging?username={{username}}&lastReceivedId=0"
+          },
+          "docs": "Fetch inbox messages sent to your short codes or sender IDs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Premium SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Checkout Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/checkout/token/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": "phoneNumber=+254711XXXYYY"
+            }
+          },
+          "docs": "Create a checkout token required to create a premium SMS subscription."
+        },
+        {
+          "info": {
+            "name": "Create Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/subscription/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": "username={{username}}&shortCode=12345&keyword=premium&phoneNumber=+254711XXXYYY&checkoutToken=CkTkn_SampleCkTknId123"
+            }
+          },
+          "docs": "Subscribe a phone number to a premium SMS product."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Airtime",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Airtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/airtime/send",
+            "body": {
+              "type": "form-urlencoded",
+              "data": "username={{username}}&recipients=[{\"phoneNumber\":\"+254711XXXYYY\",\"currencyCode\":\"KES\",\"amount\":\"100\"}]"
+            }
+          },
+          "docs": "Distribute airtime to one or more recipients."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Voice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Make Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://voice.africastalking.com/call",
+            "body": {
+              "type": "form-urlencoded",
+              "data": "username={{username}}&from=+254711XXXYYY&to=+254733YYYZZZ"
+            }
+          },
+          "docs": "Initiate an outbound call from a registered number."
+        },
+        {
+          "info": {
+            "name": "Queue Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://voice.africastalking.com/queueStatus",
+            "body": {
+              "type": "form-urlencoded",
+              "data": "username={{username}}&phoneNumbers=+254711XXXYYY"
+            }
+          },
+          "docs": "Get the number of queued calls on registered numbers."
+        },
+        {
+          "info": {
+            "name": "Upload Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://voice.africastalking.com/mediaUpload",
+            "body": {
+              "type": "form-urlencoded",
+              "data": "username={{username}}&url=https://example.com/media.mp3&phoneNumber=+254711XXXYYY"
+            }
+          },
+          "docs": "Upload a media file for playback in voice actions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mobile Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Mobile Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bundles.africastalking.com/mobile/data/request",
+            "body": {
+              "type": "json",
+              "data": "{\"username\":\"{{username}}\",\"productName\":\"MyDataProduct\",\"recipients\":[{\"phoneNumber\":\"+254711XXXYYY\",\"quantity\":50,\"unit\":\"MB\",\"validity\":\"Day\"}]}"
+            }
+          },
+          "docs": "Disburse mobile data bundles to recipients."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mobile Checkout (C2B)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://payments.africastalking.com/mobile/checkout/request",
+            "body": {
+              "type": "json",
+              "data": "{\"username\":\"{{username}}\",\"productName\":\"MyPaymentProduct\",\"phoneNumber\":\"+254711XXXYYY\",\"currencyCode\":\"KES\",\"amount\":100.5}"
+            }
+          },
+          "docs": "Initiate a customer-to-business mobile money checkout."
+        },
+        {
+          "info": {
+            "name": "Mobile B2C",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://payments.africastalking.com/mobile/b2c/request",
+            "body": {
+              "type": "json",
+              "data": "{\"username\":\"{{username}}\",\"productName\":\"MyPaymentProduct\",\"recipients\":[{\"phoneNumber\":\"+254711XXXYYY\",\"currencyCode\":\"KES\",\"amount\":100,\"reason\":\"SalaryPayment\"}]}"
+            }
+          },
+          "docs": "Send money from your wallet to mobile subscribers."
+        },
+        {
+          "info": {
+            "name": "Mobile B2B",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://payments.africastalking.com/mobile/b2b/request",
+            "body": {
+              "type": "json",
+              "data": "{\"username\":\"{{username}}\",\"productName\":\"MyPaymentProduct\",\"provider\":\"Mpesa\",\"transferType\":\"BusinessPayBill\",\"currencyCode\":\"KES\",\"amount\":1000,\"destinationChannel\":\"123456\",\"destinationAccount\":\"AcmeLtd\"}"
+            }
+          },
+          "docs": "Send money from your business to another business."
+        }
+      ]
+    }
+  ]
+}

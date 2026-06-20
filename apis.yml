@@ -1,0 +1,167 @@
+aid: africastalking
+url: https://raw.githubusercontent.com/api-evangelist/africastalking/refs/heads/main/apis.yml
+name: Africa's Talking
+kind: company
+description: Africa's Talking is a pan-African communications platform that exposes
+  a unified set of REST APIs for SMS, USSD, Voice, Airtime, Mobile Data, and Payments.
+  Developers authenticate with an apiKey and username and reach mobile subscribers
+  across Kenya, Nigeria, Uganda, Tanzania, Rwanda, and other African markets through
+  carrier integrations.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Communications
+- SMS
+- USSD
+- Voice
+- Airtime
+- Mobile Data
+- Payments
+- Africa
+created: '2026-06-20'
+modified: '2026-06-20'
+specificationVersion: '0.19'
+apis:
+- aid: africastalking:sms
+  name: Africa's Talking SMS API
+  tags:
+  - SMS
+  - Messaging
+  - Bulk SMS
+  - Premium SMS
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.africastalking.com/docs/sms/overview
+  baseURL: https://api.africastalking.com/version1
+  properties:
+  - url: https://developers.africastalking.com/docs/sms/overview
+    type: Documentation
+  - url: https://developers.africastalking.com/docs/sms/sending/bulk
+    type: APIReference
+  - url: openapi/africastalking-openapi.yml
+    type: OpenAPI
+  - url: collections/africastalking.postman_collection.json
+    type: PostmanCollection
+  description: Send single and bulk SMS, monetize content with premium SMS, manage
+    premium subscriptions and checkout tokens, and fetch inbox messages via the
+    messaging endpoint authenticated with apiKey and username headers.
+- aid: africastalking:ussd
+  name: Africa's Talking USSD API
+  tags:
+  - USSD
+  - Menu
+  - Sessions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.africastalking.com/docs/ussd/overview
+  baseURL: https://api.africastalking.com/version1
+  properties:
+  - url: https://developers.africastalking.com/docs/ussd/overview
+    type: Documentation
+  - url: openapi/africastalking-openapi.yml
+    type: OpenAPI
+  - url: collections/africastalking.postman_collection.json
+    type: PostmanCollection
+  description: Build interactive USSD menus driven by HTTP callbacks. Africa's Talking
+    POSTs session state (sessionId, serviceCode, phoneNumber, text) to your
+    callback URL and your response begins with CON to continue or END to terminate
+    the session.
+- aid: africastalking:voice
+  name: Africa's Talking Voice API
+  tags:
+  - Voice
+  - Call
+  - IVR
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.africastalking.com/docs/voice/overview
+  baseURL: https://voice.africastalking.com
+  properties:
+  - url: https://developers.africastalking.com/docs/voice/overview
+    type: Documentation
+  - url: openapi/africastalking-openapi.yml
+    type: OpenAPI
+  - url: collections/africastalking.postman_collection.json
+    type: PostmanCollection
+  description: Make outbound calls, transfer and queue calls, and upload media files.
+    Incoming and outgoing calls trigger HTTP callbacks to which you respond with
+    Voice XML actions such as Say, Play, GetDigits, Dial, Record, and Enqueue.
+- aid: africastalking:airtime
+  name: Africa's Talking Airtime API
+  tags:
+  - Airtime
+  - Top Up
+  - Rewards
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.africastalking.com/docs/airtime/overview
+  baseURL: https://api.africastalking.com/version1
+  properties:
+  - url: https://developers.africastalking.com/docs/airtime/overview
+    type: Documentation
+  - url: https://developers.africastalking.com/docs/airtime/sending
+    type: APIReference
+  - url: openapi/africastalking-openapi.yml
+    type: OpenAPI
+  - url: collections/africastalking.postman_collection.json
+    type: PostmanCollection
+  description: Programmatically distribute mobile airtime to one or many recipients
+    across supported African carriers, with per-recipient currency, amount, and
+    retry control.
+- aid: africastalking:mobile-data
+  name: Africa's Talking Mobile Data API
+  tags:
+  - Mobile Data
+  - Bundles
+  - Disbursement
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.africastalking.com/docs/data/overview
+  baseURL: https://bundles.africastalking.com
+  properties:
+  - url: https://developers.africastalking.com/docs/data/overview
+    type: Documentation
+  - url: https://developers.africastalking.com/docs/data/sending
+    type: APIReference
+  - url: openapi/africastalking-openapi.yml
+    type: OpenAPI
+  - url: collections/africastalking.postman_collection.json
+    type: PostmanCollection
+  description: Disburse mobile data bundles in bulk to subscribers, specifying
+    quantity, unit (MB or GB), and validity (Day, Week, or Month) per recipient
+    against a registered payment product.
+- aid: africastalking:payments
+  name: Africa's Talking Payments API
+  tags:
+  - Payments
+  - Mobile Money
+  - B2C
+  - B2B
+  - Checkout
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.africastalking.com/docs/payments/overview
+  baseURL: https://payments.africastalking.com
+  properties:
+  - url: https://developers.africastalking.com/docs/payments/overview
+    type: Documentation
+  - url: https://developers.africastalking.com/docs/payments/mobile_c2b/checkout
+    type: APIReference
+  - url: openapi/africastalking-openapi.yml
+    type: OpenAPI
+  - url: collections/africastalking.postman_collection.json
+    type: PostmanCollection
+  description: Collect and disburse money over mobile money rails, including mobile
+    C2B checkout, B2C disbursement to customers, and B2B business-to-business
+    transfers, with per-country currency and metadata support.
+common:
+- type: GitHubOrganization
+  url: https://github.com/AfricasTalkingLtd
+- type: LinkedIn
+  url: https://www.linkedin.com/company/africa-s-talking
+- type: Website
+  url: https://africastalking.com
+- type: Documentation
+  url: https://developers.africastalking.com
+- type: Plans
+  url: plans/africastalking-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/africastalking-rate-limits.yml
+- type: FinOps
+  url: finops/africastalking-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

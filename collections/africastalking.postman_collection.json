@@ -1,0 +1,283 @@
+{
+  "info": {
+    "name": "Africa's Talking API",
+    "description": "Unified collection for Africa's Talking communications APIs: SMS, USSD, Voice, Airtime, Mobile Data, and Payments. Authenticate with the apiKey header and a username parameter. Set environment variables apiKey, username, and product hosts before running.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "apiKey", "type": "string" },
+      { "key": "value", "value": "{{apiKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "apiBase", "value": "https://api.africastalking.com/version1" },
+    { "key": "voiceBase", "value": "https://voice.africastalking.com" },
+    { "key": "bundlesBase", "value": "https://bundles.africastalking.com" },
+    { "key": "paymentsBase", "value": "https://payments.africastalking.com" },
+    { "key": "apiKey", "value": "" },
+    { "key": "username", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "SMS",
+      "item": [
+        {
+          "name": "Send SMS",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "username", "value": "{{username}}" },
+                { "key": "to", "value": "+254711XXXYYY" },
+                { "key": "message", "value": "Hello from Africa's Talking" },
+                { "key": "from", "value": "", "disabled": true },
+                { "key": "bulkSMSMode", "value": "1" }
+              ]
+            },
+            "url": { "raw": "{{apiBase}}/messaging", "host": ["{{apiBase}}"], "path": ["messaging"] }
+          }
+        },
+        {
+          "name": "Fetch Messages",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{apiBase}}/messaging?username={{username}}&lastReceivedId=0",
+              "host": ["{{apiBase}}"],
+              "path": ["messaging"],
+              "query": [
+                { "key": "username", "value": "{{username}}" },
+                { "key": "lastReceivedId", "value": "0" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Premium SMS",
+      "item": [
+        {
+          "name": "Create Checkout Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "phoneNumber", "value": "+254711XXXYYY" }
+              ]
+            },
+            "url": {
+              "raw": "https://api.africastalking.com/checkout/token/create",
+              "protocol": "https",
+              "host": ["api", "africastalking", "com"],
+              "path": ["checkout", "token", "create"]
+            }
+          }
+        },
+        {
+          "name": "Create Subscription",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "username", "value": "{{username}}" },
+                { "key": "shortCode", "value": "12345" },
+                { "key": "keyword", "value": "premium" },
+                { "key": "phoneNumber", "value": "+254711XXXYYY" },
+                { "key": "checkoutToken", "value": "CkTkn_SampleCkTknId123" }
+              ]
+            },
+            "url": { "raw": "{{apiBase}}/subscription/create", "host": ["{{apiBase}}"], "path": ["subscription", "create"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Airtime",
+      "item": [
+        {
+          "name": "Send Airtime",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "username", "value": "{{username}}" },
+                { "key": "recipients", "value": "[{\"phoneNumber\":\"+254711XXXYYY\",\"currencyCode\":\"KES\",\"amount\":\"100\"}]" }
+              ]
+            },
+            "url": { "raw": "{{apiBase}}/airtime/send", "host": ["{{apiBase}}"], "path": ["airtime", "send"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Voice",
+      "item": [
+        {
+          "name": "Make Call",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "username", "value": "{{username}}" },
+                { "key": "from", "value": "+254711XXXYYY" },
+                { "key": "to", "value": "+254733YYYZZZ" }
+              ]
+            },
+            "url": { "raw": "{{voiceBase}}/call", "host": ["{{voiceBase}}"], "path": ["call"] }
+          }
+        },
+        {
+          "name": "Queue Status",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "username", "value": "{{username}}" },
+                { "key": "phoneNumbers", "value": "+254711XXXYYY" }
+              ]
+            },
+            "url": { "raw": "{{voiceBase}}/queueStatus", "host": ["{{voiceBase}}"], "path": ["queueStatus"] }
+          }
+        },
+        {
+          "name": "Upload Media",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "username", "value": "{{username}}" },
+                { "key": "url", "value": "https://example.com/media.mp3" },
+                { "key": "phoneNumber", "value": "+254711XXXYYY" }
+              ]
+            },
+            "url": { "raw": "{{voiceBase}}/mediaUpload", "host": ["{{voiceBase}}"], "path": ["mediaUpload"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mobile Data",
+      "item": [
+        {
+          "name": "Send Mobile Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"productName\": \"MyDataProduct\",\n  \"recipients\": [\n    {\n      \"phoneNumber\": \"+254711XXXYYY\",\n      \"quantity\": 50,\n      \"unit\": \"MB\",\n      \"validity\": \"Day\"\n    }\n  ]\n}"
+            },
+            "url": { "raw": "{{bundlesBase}}/mobile/data/request", "host": ["{{bundlesBase}}"], "path": ["mobile", "data", "request"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Mobile Checkout (C2B)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"productName\": \"MyPaymentProduct\",\n  \"phoneNumber\": \"+254711XXXYYY\",\n  \"currencyCode\": \"KES\",\n  \"amount\": 100.5\n}"
+            },
+            "url": { "raw": "{{paymentsBase}}/mobile/checkout/request", "host": ["{{paymentsBase}}"], "path": ["mobile", "checkout", "request"] }
+          }
+        },
+        {
+          "name": "Mobile B2C",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"productName\": \"MyPaymentProduct\",\n  \"recipients\": [\n    {\n      \"phoneNumber\": \"+254711XXXYYY\",\n      \"currencyCode\": \"KES\",\n      \"amount\": 100,\n      \"reason\": \"SalaryPayment\"\n    }\n  ]\n}"
+            },
+            "url": { "raw": "{{paymentsBase}}/mobile/b2c/request", "host": ["{{paymentsBase}}"], "path": ["mobile", "b2c", "request"] }
+          }
+        },
+        {
+          "name": "Mobile B2B",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apiKey", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"productName\": \"MyPaymentProduct\",\n  \"provider\": \"Mpesa\",\n  \"transferType\": \"BusinessPayBill\",\n  \"currencyCode\": \"KES\",\n  \"amount\": 1000,\n  \"destinationChannel\": \"123456\",\n  \"destinationAccount\": \"AcmeLtd\"\n}"
+            },
+            "url": { "raw": "{{paymentsBase}}/mobile/b2b/request", "host": ["{{paymentsBase}}"], "path": ["mobile", "b2b", "request"] }
+          }
+        }
+      ]
+    }
+  ]
+}
