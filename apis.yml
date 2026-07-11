@@ -148,6 +148,10 @@ apis:
     C2B checkout, B2C disbursement to customers, and B2B business-to-business
     transfers, with per-country currency and metadata support.
 common:
+- type: DomainSecurity
+  url: security/africastalking-domain-security.yml
+- type: Authentication
+  url: authentication/africastalking-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/AfricasTalkingLtd
 - type: LinkedIn

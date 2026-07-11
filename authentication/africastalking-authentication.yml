@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/africastalking-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: apiKey
+  description: Africa's Talking API key generated from your account dashboard.
+  sources:
+  - openapi/africastalking-openapi.yml
