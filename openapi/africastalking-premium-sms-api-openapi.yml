@@ -1,0 +1,182 @@
+openapi: 3.0.1
+info:
+  title: Africa's Talking Airtime Premium SMS API
+  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.'
+  termsOfService: https://africastalking.com/terms
+  contact:
+    name: Africa's Talking Support
+    url: https://help.africastalking.com
+  version: version1
+servers:
+- url: https://api.africastalking.com/version1
+  description: Messaging, Airtime and Subscription production host
+- url: https://api.sandbox.africastalking.com/version1
+  description: Messaging, Airtime and Subscription sandbox host
+- url: https://voice.africastalking.com
+  description: Voice production host
+- url: https://bundles.africastalking.com
+  description: Mobile Data production host
+- url: https://payments.africastalking.com
+  description: Payments production host
+security:
+- apiKey: []
+tags:
+- name: Premium SMS
+  description: Premium SMS subscriptions and checkout tokens.
+paths:
+  /checkout/token/create:
+    post:
+      operationId: createCheckoutToken
+      tags:
+      - Premium SMS
+      summary: Create checkout token
+      description: Generate a checkout token for a phone number, required before creating a premium SMS subscription.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - phoneNumber
+              properties:
+                phoneNumber:
+                  type: string
+                  description: Subscriber phone number in international format.
+                  example: +254711XXXYYY
+      responses:
+        '201':
+          description: Checkout token created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutTokenResponse'
+  /subscription/create:
+    post:
+      operationId: createSubscription
+      tags:
+      - Premium SMS
+      summary: Create premium SMS subscription
+      description: Subscribe a phone number to a premium SMS product using a checkout token.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SubscriptionRequest'
+      responses:
+        '201':
+          description: Subscription created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+  /subscription/delete:
+    post:
+      operationId: deleteSubscription
+      tags:
+      - Premium SMS
+      summary: Delete premium SMS subscription
+      description: Unsubscribe a phone number from a premium SMS product.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - username
+              - shortCode
+              - keyword
+              - phoneNumber
+              properties:
+                username:
+                  type: string
+                shortCode:
+                  type: string
+                keyword:
+                  type: string
+                phoneNumber:
+                  type: string
+      responses:
+        '201':
+          description: Subscription deleted.
+  /subscription:
+    get:
+      operationId: fetchSubscriptions
+      tags:
+      - Premium SMS
+      summary: Fetch premium SMS subscriptions
+      parameters:
+      - name: username
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: shortCode
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: keyword
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: lastReceivedId
+        in: query
+        required: false
+        schema:
+          type: string
+          default: '0'
+      responses:
+        '200':
+          description: List of subscriptions.
+components:
+  schemas:
+    SubscriptionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: Success
+        description:
+          type: string
+          example: Waiting for user input
+    CheckoutTokenResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Success
+        token:
+          type: string
+          example: CkTkn_SampleCkTknId123
+    SubscriptionRequest:
+      type: object
+      required:
+      - username
+      - shortCode
+      - keyword
+      - phoneNumber
+      - checkoutToken
+      properties:
+        username:
+          type: string
+        shortCode:
+          type: string
+          description: Premium SMS short code mapped to your account.
+        keyword:
+          type: string
+          description: Premium SMS keyword mapped to your short code.
+        phoneNumber:
+          type: string
+        checkoutToken:
+          type: string
+          description: Token returned by /checkout/token/create.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: Africa's Talking API key generated from your account dashboard.

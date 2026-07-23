@@ -1,0 +1,152 @@
+openapi: 3.0.1
+info:
+  title: Africa's Talking Airtime Voice API
+  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.'
+  termsOfService: https://africastalking.com/terms
+  contact:
+    name: Africa's Talking Support
+    url: https://help.africastalking.com
+  version: version1
+servers:
+- url: https://api.africastalking.com/version1
+  description: Messaging, Airtime and Subscription production host
+- url: https://api.sandbox.africastalking.com/version1
+  description: Messaging, Airtime and Subscription sandbox host
+- url: https://voice.africastalking.com
+  description: Voice production host
+- url: https://bundles.africastalking.com
+  description: Mobile Data production host
+- url: https://payments.africastalking.com
+  description: Payments production host
+security:
+- apiKey: []
+tags:
+- name: Voice
+  description: Outbound calls, transfers, queue status, and media upload.
+paths:
+  /call:
+    post:
+      operationId: makeCall
+      tags:
+      - Voice
+      summary: Make outbound call
+      description: Initiate an outbound call from a registered Africa's Talking number to one or more destination numbers. Served from voice.africastalking.com.
+      servers:
+      - url: https://voice.africastalking.com
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MakeCallRequest'
+      responses:
+        '200':
+          description: Call entries queued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MakeCallResponse'
+  /queueStatus:
+    post:
+      operationId: queueStatus
+      tags:
+      - Voice
+      summary: Get queued call status
+      description: Return the number of calls currently queued on registered phone numbers.
+      servers:
+      - url: https://voice.africastalking.com
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - username
+              - phoneNumbers
+              properties:
+                username:
+                  type: string
+                phoneNumbers:
+                  type: string
+                  description: Comma-separated list of registered phone numbers.
+      responses:
+        '200':
+          description: Queue status entries.
+  /mediaUpload:
+    post:
+      operationId: uploadMedia
+      tags:
+      - Voice
+      summary: Upload voice media file
+      description: Upload a media file to be played on demand by Play, musicOnHold, or ringBackTone.
+      servers:
+      - url: https://voice.africastalking.com
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - username
+              - url
+              - phoneNumber
+              properties:
+                username:
+                  type: string
+                url:
+                  type: string
+                  description: HTTP(S) URL of the media file to upload.
+                phoneNumber:
+                  type: string
+                  description: Africa's Talking phone number mapped to your account.
+      responses:
+        '200':
+          description: Media upload accepted.
+components:
+  schemas:
+    MakeCallRequest:
+      type: object
+      required:
+      - username
+      - from
+      - to
+      properties:
+        username:
+          type: string
+        from:
+          type: string
+          description: Registered Africa's Talking phone number to dial out with.
+          example: +254711XXXYYY
+        to:
+          type: string
+          description: Comma-separated destination phone numbers.
+          example: +254733YYYZZZ
+        clientRequestId:
+          type: string
+          description: Variable sent to your Events Callback URL for this call.
+    MakeCallResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              phoneNumber:
+                type: string
+              status:
+                type: string
+                example: Queued
+              sessionId:
+                type: string
+        errorMessage:
+          type: string
+          example: None
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: Africa's Talking API key generated from your account dashboard.

@@ -1,0 +1,101 @@
+openapi: 3.0.1
+info:
+  title: Africa's Talking Airtime API
+  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.'
+  termsOfService: https://africastalking.com/terms
+  contact:
+    name: Africa's Talking Support
+    url: https://help.africastalking.com
+  version: version1
+servers:
+- url: https://api.africastalking.com/version1
+  description: Messaging, Airtime and Subscription production host
+- url: https://api.sandbox.africastalking.com/version1
+  description: Messaging, Airtime and Subscription sandbox host
+- url: https://voice.africastalking.com
+  description: Voice production host
+- url: https://bundles.africastalking.com
+  description: Mobile Data production host
+- url: https://payments.africastalking.com
+  description: Payments production host
+security:
+- apiKey: []
+tags:
+- name: Airtime
+  description: Distribute mobile airtime to recipients.
+paths:
+  /airtime/send:
+    post:
+      operationId: sendAirtime
+      tags:
+      - Airtime
+      summary: Send airtime
+      description: Distribute airtime to one or more recipients. `recipients` is a JSON-encoded array.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendAirtimeRequest'
+      responses:
+        '201':
+          description: Airtime request accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendAirtimeResponse'
+components:
+  schemas:
+    SendAirtimeResponse:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          example: None
+        numSent:
+          type: integer
+          example: 1
+        totalAmount:
+          type: string
+          example: KES 100.0000
+        totalDiscount:
+          type: string
+          example: KES 3.0000
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              phoneNumber:
+                type: string
+              amount:
+                type: string
+              status:
+                type: string
+              requestId:
+                type: string
+              discount:
+                type: string
+              errorMessage:
+                type: string
+    SendAirtimeRequest:
+      type: object
+      required:
+      - username
+      - recipients
+      properties:
+        username:
+          type: string
+        recipients:
+          type: string
+          description: JSON-encoded array of recipient objects, each with phoneNumber, currencyCode, amount, and optional maxNumRetry.
+          example: '[{"phoneNumber":"+254711XXXYYY","currencyCode":"KES","amount":"100"}]'
+        maxNumRetry:
+          type: integer
+          description: Maximum delivery retries in hours on failure.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: Africa's Talking API key generated from your account dashboard.

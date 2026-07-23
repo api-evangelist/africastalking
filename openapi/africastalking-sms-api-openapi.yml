@@ -1,0 +1,180 @@
+openapi: 3.0.1
+info:
+  title: Africa's Talking Airtime SMS API
+  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.'
+  termsOfService: https://africastalking.com/terms
+  contact:
+    name: Africa's Talking Support
+    url: https://help.africastalking.com
+  version: version1
+servers:
+- url: https://api.africastalking.com/version1
+  description: Messaging, Airtime and Subscription production host
+- url: https://api.sandbox.africastalking.com/version1
+  description: Messaging, Airtime and Subscription sandbox host
+- url: https://voice.africastalking.com
+  description: Voice production host
+- url: https://bundles.africastalking.com
+  description: Mobile Data production host
+- url: https://payments.africastalking.com
+  description: Payments production host
+security:
+- apiKey: []
+tags:
+- name: SMS
+  description: Send single and bulk SMS and fetch inbox messages.
+paths:
+  /messaging:
+    post:
+      operationId: sendMessage
+      tags:
+      - SMS
+      summary: Send SMS
+      description: Send a single or bulk SMS to one or more recipients. Set `bulkSMSMode` to 1 for bulk delivery. Provide a registered `from` short code or sender ID where available.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendMessageRequest'
+      responses:
+        '201':
+          description: Message accepted for delivery.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized - missing or invalid apiKey.
+    get:
+      operationId: fetchMessages
+      tags:
+      - SMS
+      summary: Fetch inbox messages
+      description: Retrieve messages sent to your registered short codes or sender IDs.
+      parameters:
+      - name: username
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: lastReceivedId
+        in: query
+        required: false
+        description: ID of the message last processed; 0 fetches from the start.
+        schema:
+          type: string
+          default: '0'
+      responses:
+        '200':
+          description: Inbox messages.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchMessagesResponse'
+components:
+  schemas:
+    SendMessageRequest:
+      type: object
+      required:
+      - username
+      - to
+      - message
+      properties:
+        username:
+          type: string
+          description: Your Africa's Talking application username.
+        to:
+          type: string
+          description: Comma-separated recipient phone numbers in international format.
+          example: +254711XXXYYY,+254733YYYZZZ
+        message:
+          type: string
+          description: The message body to send.
+        from:
+          type: string
+          description: Registered short code or alphanumeric sender ID.
+        bulkSMSMode:
+          type: integer
+          description: Set to 1 to enable bulk SMS delivery.
+          enum:
+          - 0
+          - 1
+          default: 1
+        enqueue:
+          type: integer
+          description: Set to 1 to enqueue large outbound batches.
+          enum:
+          - 0
+          - 1
+        keyword:
+          type: string
+          description: Premium SMS keyword (premium SMS only).
+        linkId:
+          type: string
+          description: Link identifier from an onDemand premium SMS subscription.
+        retryDurationInHours:
+          type: integer
+          description: Hours to retry premium SMS delivery before discarding.
+    SendMessageResponse:
+      type: object
+      properties:
+        SMSMessageData:
+          type: object
+          properties:
+            Message:
+              type: string
+              example: 'Sent to 1/1 Total Cost: KES 0.8000'
+            Recipients:
+              type: array
+              items:
+                $ref: '#/components/schemas/Recipient'
+    FetchMessagesResponse:
+      type: object
+      properties:
+        SMSMessageData:
+          type: object
+          properties:
+            Messages:
+              type: array
+              items:
+                type: object
+                properties:
+                  linkId:
+                    type: string
+                  text:
+                    type: string
+                  to:
+                    type: string
+                  id:
+                    type: integer
+                  date:
+                    type: string
+                  from:
+                    type: string
+    Recipient:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 101
+        number:
+          type: string
+          example: +254711XXXYYY
+        status:
+          type: string
+          example: Success
+        cost:
+          type: string
+          example: KES 0.8000
+        messageId:
+          type: string
+          example: ATPid_SampleTxnId123
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: Africa's Talking API key generated from your account dashboard.
