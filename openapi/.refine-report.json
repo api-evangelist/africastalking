@@ -1,0 +1,24 @@
+{
+  "provider": "africastalking",
+  "sources": [
+    "africastalking-airtime-api-openapi.yml",
+    "africastalking-mobile-data-api-openapi.yml",
+    "africastalking-payments-api-openapi.yml",
+    "africastalking-premium-sms-api-openapi.yml",
+    "africastalking-sms-api-openapi.yml",
+    "africastalking-voice-api-openapi.yml"
+  ],
+  "outputs": [
+    "africastalking-airtime-api-openapi.yml",
+    "africastalking-mobile-data-api-openapi.yml",
+    "africastalking-payments-api-openapi.yml",
+    "africastalking-premium-sms-api-openapi.yml",
+    "africastalking-sms-api-openapi.yml",
+    "africastalking-voice-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
