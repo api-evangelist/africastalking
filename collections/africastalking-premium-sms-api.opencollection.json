@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Africa's Talking Airtime Premium SMS API",
+    "version": "version1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Premium SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create checkout token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/checkout/token/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "phoneNumber",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Generate a checkout token for a phone number, required before creating a premium SMS subscription."
+        },
+        {
+          "info": {
+            "name": "Create premium SMS subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/subscription/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Subscribe a phone number to a premium SMS product using a checkout token."
+        },
+        {
+          "info": {
+            "name": "Delete premium SMS subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/subscription/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "shortCode",
+                  "value": ""
+                },
+                {
+                  "name": "keyword",
+                  "value": ""
+                },
+                {
+                  "name": "phoneNumber",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Unsubscribe a phone number from a premium SMS product."
+        },
+        {
+          "info": {
+            "name": "Fetch premium SMS subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.africastalking.com/version1/subscription",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "shortCode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastReceivedId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch premium SMS subscriptions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Africa's Talking Airtime API",
+    "version": "version1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Airtime",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send airtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/airtime/send",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Distribute airtime to one or more recipients. `recipients` is a JSON-encoded array."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

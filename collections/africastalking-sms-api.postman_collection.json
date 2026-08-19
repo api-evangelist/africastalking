@@ -1,0 +1,623 @@
+{
+  "item": [
+    {
+      "id": "6b38f51c-b5cf-4c28-9078-7a686c0ffc7b",
+      "name": "SMS",
+      "description": {
+        "content": "Send single and bulk SMS and fetch inbox messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "361b213e-d3b1-491d-97e0-70659ec8caa4",
+          "name": "Send SMS",
+          "request": {
+            "name": "Send SMS",
+            "description": {
+              "content": "Send a single or bulk SMS to one or more recipients. Set `bulkSMSMode` to 1 for bulk delivery. Provide a registered `from` short code or sender ID where available.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messaging"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) Your Africa's Talking application username."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated recipient phone numbers in international format."
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "(Required) The message body to send."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Registered short code or alphanumeric sender ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "bulkSMSMode",
+                  "value": "1",
+                  "description": "Set to 1 to enable bulk SMS delivery."
+                },
+                {
+                  "disabled": false,
+                  "key": "enqueue",
+                  "value": "<integer>",
+                  "description": "Set to 1 to enqueue large outbound batches."
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>",
+                  "description": "Premium SMS keyword (premium SMS only)."
+                },
+                {
+                  "disabled": false,
+                  "key": "linkId",
+                  "value": "<string>",
+                  "description": "Link identifier from an onDemand premium SMS subscription."
+                },
+                {
+                  "disabled": false,
+                  "key": "retryDurationInHours",
+                  "value": "<integer>",
+                  "description": "Hours to retry premium SMS delivery before discarding."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "990d3216-46ba-4bf1-aba9-99fcd552a2cf",
+              "name": "Message accepted for delivery.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Your Africa's Talking application username.",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Comma-separated recipient phone numbers in international format.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+254711XXXYYY,+254733YYYZZZ"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The message body to send.",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Registered short code or alphanumeric sender ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set to 1 to enable bulk SMS delivery.",
+                        "type": "text/plain"
+                      },
+                      "key": "bulkSMSMode",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set to 1 to enqueue large outbound batches.",
+                        "type": "text/plain"
+                      },
+                      "key": "enqueue",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Premium SMS keyword (premium SMS only).",
+                        "type": "text/plain"
+                      },
+                      "key": "keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Link identifier from an onDemand premium SMS subscription.",
+                        "type": "text/plain"
+                      },
+                      "key": "linkId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Hours to retry premium SMS delivery before discarding.",
+                        "type": "text/plain"
+                      },
+                      "key": "retryDurationInHours",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SMSMessageData\": {\n    \"Message\": \"Sent to 1/1 Total Cost: KES 0.8000\",\n    \"Recipients\": [\n      {\n        \"statusCode\": 101,\n        \"number\": \"+254711XXXYYY\",\n        \"status\": \"Success\",\n        \"cost\": \"KES 0.8000\",\n        \"messageId\": \"ATPid_SampleTxnId123\"\n      },\n      {\n        \"statusCode\": 101,\n        \"number\": \"+254711XXXYYY\",\n        \"status\": \"Success\",\n        \"cost\": \"KES 0.8000\",\n        \"messageId\": \"ATPid_SampleTxnId123\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58e16994-87ea-4702-81e4-7618b4caf686",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Your Africa's Talking application username.",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Comma-separated recipient phone numbers in international format.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+254711XXXYYY,+254733YYYZZZ"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The message body to send.",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Registered short code or alphanumeric sender ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set to 1 to enable bulk SMS delivery.",
+                        "type": "text/plain"
+                      },
+                      "key": "bulkSMSMode",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set to 1 to enqueue large outbound batches.",
+                        "type": "text/plain"
+                      },
+                      "key": "enqueue",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Premium SMS keyword (premium SMS only).",
+                        "type": "text/plain"
+                      },
+                      "key": "keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Link identifier from an onDemand premium SMS subscription.",
+                        "type": "text/plain"
+                      },
+                      "key": "linkId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Hours to retry premium SMS delivery before discarding.",
+                        "type": "text/plain"
+                      },
+                      "key": "retryDurationInHours",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cadb998f-5be3-4fb4-9ca0-3415eed32fce",
+              "name": "Unauthorized - missing or invalid apiKey.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Your Africa's Talking application username.",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Comma-separated recipient phone numbers in international format.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+254711XXXYYY,+254733YYYZZZ"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The message body to send.",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Registered short code or alphanumeric sender ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set to 1 to enable bulk SMS delivery.",
+                        "type": "text/plain"
+                      },
+                      "key": "bulkSMSMode",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set to 1 to enqueue large outbound batches.",
+                        "type": "text/plain"
+                      },
+                      "key": "enqueue",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Premium SMS keyword (premium SMS only).",
+                        "type": "text/plain"
+                      },
+                      "key": "keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Link identifier from an onDemand premium SMS subscription.",
+                        "type": "text/plain"
+                      },
+                      "key": "linkId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Hours to retry premium SMS delivery before discarding.",
+                        "type": "text/plain"
+                      },
+                      "key": "retryDurationInHours",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4771cb9-f2c8-4860-8220-d8725c22cee2",
+          "name": "Fetch inbox messages",
+          "request": {
+            "name": "Fetch inbox messages",
+            "description": {
+              "content": "Retrieve messages sent to your registered short codes or sender IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messaging"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "lastReceivedId",
+                  "value": "0",
+                  "description": "ID of the message last processed; 0 fetches from the start."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2a8bdae-5137-464c-a31e-8d1ae386e67d",
+              "name": "Inbox messages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastReceivedId",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SMSMessageData\": {\n    \"Messages\": [\n      {\n        \"linkId\": \"string\",\n        \"text\": \"string\",\n        \"to\": \"string\",\n        \"id\": 7549,\n        \"date\": \"string\",\n        \"from\": \"string\"\n      },\n      {\n        \"linkId\": \"string\",\n        \"text\": \"string\",\n        \"to\": \"string\",\n        \"id\": 5322,\n        \"date\": \"string\",\n        \"from\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.africastalking.com/version1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "589c0b0c-9689-41b3-b2d8-e9dd761f780e",
+    "name": "Africa's Talking Airtime SMS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified REST API for Africa's Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.\n\nContact Support:\n Name: Africa's Talking Support",
+      "type": "text/plain"
+    }
+  }
+}

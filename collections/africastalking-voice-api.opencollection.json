@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Africa's Talking Airtime Voice API",
+    "version": "version1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Voice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Make outbound call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/call",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Initiate an outbound call from a registered Africa's Talking number to one or more destination numbers. Served from voice.africastalking.com."
+        },
+        {
+          "info": {
+            "name": "Get queued call status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/queueStatus",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "phoneNumbers",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Return the number of calls currently queued on registered phone numbers."
+        },
+        {
+          "info": {
+            "name": "Upload voice media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/mediaUpload",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "url",
+                  "value": ""
+                },
+                {
+                  "name": "phoneNumber",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a media file to be played on demand by Play, musicOnHold, or ringBackTone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

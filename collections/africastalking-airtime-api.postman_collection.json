@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "990aff27-6b3f-4768-8b6f-ceae3ef1991f",
+      "name": "Airtime",
+      "description": {
+        "content": "Distribute mobile airtime to recipients.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aae88d52-7fcf-4614-922c-eca192ad04fd",
+          "name": "Send airtime",
+          "request": {
+            "name": "Send airtime",
+            "description": {
+              "content": "Distribute airtime to one or more recipients. `recipients` is a JSON-encoded array.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "airtime",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "recipients",
+                  "value": "<string>",
+                  "description": "(Required) JSON-encoded array of recipient objects, each with phoneNumber, currencyCode, amount, and optional maxNumRetry."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxNumRetry",
+                  "value": "<integer>",
+                  "description": "Maximum delivery retries in hours on failure."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d75b3569-37b5-46b3-b77f-5c5ffc78de96",
+              "name": "Airtime request accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "airtime",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) JSON-encoded array of recipient objects, each with phoneNumber, currencyCode, amount, and optional maxNumRetry.",
+                        "type": "text/plain"
+                      },
+                      "key": "recipients",
+                      "value": "[{\"phoneNumber\":\"+254711XXXYYY\",\"currencyCode\":\"KES\",\"amount\":\"100\"}]"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum delivery retries in hours on failure.",
+                        "type": "text/plain"
+                      },
+                      "key": "maxNumRetry",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"None\",\n  \"numSent\": 1,\n  \"totalAmount\": \"KES 100.0000\",\n  \"totalDiscount\": \"KES 3.0000\",\n  \"responses\": [\n    {\n      \"phoneNumber\": \"string\",\n      \"amount\": \"string\",\n      \"status\": \"string\",\n      \"requestId\": \"string\",\n      \"discount\": \"string\",\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"phoneNumber\": \"string\",\n      \"amount\": \"string\",\n      \"status\": \"string\",\n      \"requestId\": \"string\",\n      \"discount\": \"string\",\n      \"errorMessage\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.africastalking.com/version1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a2c3a7d0-9608-4e4a-943b-5509f5ce1880",
+    "name": "Africa's Talking Airtime API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified REST API for Africa's Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.\n\nContact Support:\n Name: Africa's Talking Support",
+      "type": "text/plain"
+    }
+  }
+}

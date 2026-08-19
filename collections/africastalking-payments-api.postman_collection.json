@@ -1,0 +1,376 @@
+{
+  "item": [
+    {
+      "id": "db481315-bafa-4fc6-b18a-fd83f5c89aa8",
+      "name": "Payments",
+      "description": {
+        "content": "Mobile C2B checkout, B2C, and B2B mobile money transfers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "70a43f0f-918f-4f97-9685-0720af127994",
+          "name": "Mobile C2B checkout",
+          "request": {
+            "name": "Mobile C2B checkout",
+            "description": {
+              "content": "Initiate a mobile money checkout (customer-to-business) prompting the subscriber to authorize payment. Served from payments.africastalking.com.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "mobile",
+                "checkout",
+                "request"
+              ],
+              "host": [
+                "payments",
+                "africastalking",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"providerChannel\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d092c90c-06d6-446c-9120-ddfb5d0f5e79",
+              "name": "Checkout initiated.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "mobile",
+                    "checkout",
+                    "request"
+                  ],
+                  "host": [
+                    "payments",
+                    "africastalking",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"phoneNumber\": \"+254711XXXYYY\",\n  \"currencyCode\": \"KES\",\n  \"amount\": 100.5,\n  \"providerChannel\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"PendingConfirmation\",\n  \"description\": \"Waiting for user input\",\n  \"transactionId\": \"ATPid_SampleTxnId123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79ba2a70-b408-428d-a0d3-252e6959fd49",
+          "name": "Mobile B2C payment",
+          "request": {
+            "name": "Mobile B2C payment",
+            "description": {
+              "content": "Send money from your payment wallet to one or more mobile subscribers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "mobile",
+                "b2c",
+                "request"
+              ],
+              "host": [
+                "payments",
+                "africastalking",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"recipients\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"reason\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"reason\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af069ba3-76e2-4b4e-b1c8-62624f24408b",
+              "name": "B2C request accepted.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "mobile",
+                    "b2c",
+                    "request"
+                  ],
+                  "host": [
+                    "payments",
+                    "africastalking",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"recipients\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"currencyCode\": \"KES\",\n      \"amount\": \"<number>\",\n      \"reason\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"currencyCode\": \"KES\",\n      \"amount\": \"<number>\",\n      \"reason\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"numQueued\": 1,\n  \"totalValue\": \"KES 100.0000\",\n  \"totalTransactionFee\": \"string\",\n  \"entries\": [\n    {\n      \"phoneNumber\": \"string\",\n      \"status\": \"Queued\",\n      \"provider\": \"string\",\n      \"providerChannel\": \"string\",\n      \"value\": \"string\",\n      \"transactionId\": \"string\",\n      \"transactionFee\": \"string\"\n    },\n    {\n      \"phoneNumber\": \"string\",\n      \"status\": \"Queued\",\n      \"provider\": \"string\",\n      \"providerChannel\": \"string\",\n      \"value\": \"string\",\n      \"transactionId\": \"string\",\n      \"transactionFee\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1eca6add-117a-4c82-8754-9b181c0f8bce",
+          "name": "Mobile B2B payment",
+          "request": {
+            "name": "Mobile B2B payment",
+            "description": {
+              "content": "Send money from your business to another business over mobile money rails.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "mobile",
+                "b2b",
+                "request"
+              ],
+              "host": [
+                "payments",
+                "africastalking",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"transferType\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"destinationChannel\": \"<string>\",\n  \"destinationAccount\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d0484d1-3707-4166-8528-bf464ad3b4aa",
+              "name": "B2B request accepted.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "mobile",
+                    "b2b",
+                    "request"
+                  ],
+                  "host": [
+                    "payments",
+                    "africastalking",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"transferType\": \"<string>\",\n  \"currencyCode\": \"KES\",\n  \"amount\": \"<number>\",\n  \"destinationChannel\": \"<string>\",\n  \"destinationAccount\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Queued\",\n  \"transactionId\": \"string\",\n  \"transactionFee\": \"string\",\n  \"providerChannel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.africastalking.com/version1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "57f70606-86dd-48a1-830b-e552e56a46ac",
+    "name": "Africa's Talking Airtime Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified REST API for Africa's Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.\n\nContact Support:\n Name: Africa's Talking Support",
+      "type": "text/plain"
+    }
+  }
+}

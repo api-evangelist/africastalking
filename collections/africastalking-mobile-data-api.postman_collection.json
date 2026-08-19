@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "6497c660-3493-4713-8601-91cb92dba05f",
+      "name": "Mobile Data",
+      "description": {
+        "content": "Disburse mobile data bundles to recipients.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b1d7f16d-39da-4510-b4b9-40d2466edc54",
+          "name": "Send mobile data bundles",
+          "request": {
+            "name": "Send mobile data bundles",
+            "description": {
+              "content": "Disburse mobile data bundles to a list of recipients. Served from bundles.africastalking.com.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "mobile",
+                "data",
+                "request"
+              ],
+              "host": [
+                "bundles",
+                "africastalking",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"recipients\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit\": \"<string>\",\n      \"validity\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit\": \"<string>\",\n      \"validity\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e395aa51-b122-445c-ae87-44ecf81836d3",
+              "name": "Mobile data request accepted.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "mobile",
+                    "data",
+                    "request"
+                  ],
+                  "host": [
+                    "bundles",
+                    "africastalking",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"recipients\": [\n    {\n      \"phoneNumber\": \"+254711XXXYYY\",\n      \"quantity\": 50,\n      \"unit\": \"<string>\",\n      \"validity\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    {\n      \"phoneNumber\": \"+254711XXXYYY\",\n      \"quantity\": 50,\n      \"unit\": \"<string>\",\n      \"validity\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"phoneNumber\": \"string\",\n      \"provider\": \"string\",\n      \"status\": \"Queued\",\n      \"transactionId\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"phoneNumber\": \"string\",\n      \"provider\": \"string\",\n      \"status\": \"Queued\",\n      \"transactionId\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.africastalking.com/version1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf94b524-77eb-4656-8fc8-b06209c5adca",
+    "name": "Africa's Talking Airtime Mobile Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified REST API for Africa's Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.\n\nContact Support:\n Name: Africa's Talking Support",
+      "type": "text/plain"
+    }
+  }
+}

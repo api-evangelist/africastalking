@@ -1,0 +1,459 @@
+{
+  "item": [
+    {
+      "id": "d7f1d7f2-ea14-45c1-a148-b3b4cd4541be",
+      "name": "Voice",
+      "description": {
+        "content": "Outbound calls, transfers, queue status, and media upload.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d99bd1f2-8d4d-49ee-8378-f93ede77e45b",
+          "name": "Make outbound call",
+          "request": {
+            "name": "Make outbound call",
+            "description": {
+              "content": "Initiate an outbound call from a registered Africa's Talking number to one or more destination numbers. Served from voice.africastalking.com.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "call"
+              ],
+              "host": [
+                "voice",
+                "africastalking",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Registered Africa's Talking phone number to dial out with."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated destination phone numbers."
+                },
+                {
+                  "disabled": false,
+                  "key": "clientRequestId",
+                  "value": "<string>",
+                  "description": "Variable sent to your Events Callback URL for this call."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fdd810ea-33f4-463e-ae6b-e34b309e6ac0",
+              "name": "Call entries queued.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "call"
+                  ],
+                  "host": [
+                    "voice",
+                    "africastalking",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Registered Africa's Talking phone number to dial out with.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "+254711XXXYYY"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Comma-separated destination phone numbers.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+254733YYYZZZ"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Variable sent to your Events Callback URL for this call.",
+                        "type": "text/plain"
+                      },
+                      "key": "clientRequestId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"phoneNumber\": \"string\",\n      \"status\": \"Queued\",\n      \"sessionId\": \"string\"\n    },\n    {\n      \"phoneNumber\": \"string\",\n      \"status\": \"Queued\",\n      \"sessionId\": \"string\"\n    }\n  ],\n  \"errorMessage\": \"None\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbfd981f-f58f-4ea6-8d8e-3abf5d9e340c",
+          "name": "Get queued call status",
+          "request": {
+            "name": "Get queued call status",
+            "description": {
+              "content": "Return the number of calls currently queued on registered phone numbers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "queueStatus"
+              ],
+              "host": [
+                "voice",
+                "africastalking",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "phoneNumbers",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of registered phone numbers."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82cccb36-a3bf-4d1d-9ffd-72599db7f2f2",
+              "name": "Queue status entries.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "queueStatus"
+                  ],
+                  "host": [
+                    "voice",
+                    "africastalking",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Comma-separated list of registered phone numbers.",
+                        "type": "text/plain"
+                      },
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69ff1f97-09c9-45a9-9e3b-25956da68f9a",
+          "name": "Upload voice media file",
+          "request": {
+            "name": "Upload voice media file",
+            "description": {
+              "content": "Upload a media file to be played on demand by Play, musicOnHold, or ringBackTone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "mediaUpload"
+              ],
+              "host": [
+                "voice",
+                "africastalking",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>",
+                  "description": "(Required) HTTP(S) URL of the media file to upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "phoneNumber",
+                  "value": "<string>",
+                  "description": "(Required) Africa's Talking phone number mapped to your account."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "21bf6bbd-4464-4a97-bb4f-6e488582e90a",
+              "name": "Media upload accepted.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "mediaUpload"
+                  ],
+                  "host": [
+                    "voice",
+                    "africastalking",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) HTTP(S) URL of the media file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Africa's Talking phone number mapped to your account.",
+                        "type": "text/plain"
+                      },
+                      "key": "phoneNumber",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.africastalking.com/version1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a5ee3f47-98d7-4e80-90ad-10b6897de752",
+    "name": "Africa's Talking Airtime Voice API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified REST API for Africa's Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.\n\nContact Support:\n Name: Africa's Talking Support",
+      "type": "text/plain"
+    }
+  }
+}

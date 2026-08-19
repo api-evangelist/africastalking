@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Africa's Talking Airtime Payments API",
+    "version": "version1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mobile C2B checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/mobile/checkout/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a mobile money checkout (customer-to-business) prompting the subscriber to authorize payment. Served from payments.africastalking.com."
+        },
+        {
+          "info": {
+            "name": "Mobile B2C payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/mobile/b2c/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send money from your payment wallet to one or more mobile subscribers."
+        },
+        {
+          "info": {
+            "name": "Mobile B2B payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/mobile/b2b/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send money from your business to another business over mobile money rails."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

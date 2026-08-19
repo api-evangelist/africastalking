@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Africa's Talking Airtime SMS API",
+    "version": "version1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch inbox messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.africastalking.com/version1/messaging",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastReceivedId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the message last processed; 0 fetches from the start."
+              }
+            ]
+          },
+          "docs": "Retrieve messages sent to your registered short codes or sender IDs."
+        },
+        {
+          "info": {
+            "name": "Send SMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/messaging",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Send a single or bulk SMS to one or more recipients. Set `bulkSMSMode` to 1 for bulk delivery. Provide a registered `from` short code or sender ID where available."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

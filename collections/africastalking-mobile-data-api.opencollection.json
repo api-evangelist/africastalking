@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Africa's Talking Airtime Mobile Data API",
+    "version": "version1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mobile Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send mobile data bundles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.africastalking.com/version1/mobile/data/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Disburse mobile data bundles to a list of recipients. Served from bundles.africastalking.com."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
