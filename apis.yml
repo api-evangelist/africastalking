@@ -7,6 +7,18 @@ description: Africa's Talking is a pan-African communications platform that expo
   Developers authenticate with an apiKey and username and reach mobile subscribers
   across Kenya, Nigeria, Uganda, Tanzania, Rwanda, and other African markets through
   carrier integrations.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
