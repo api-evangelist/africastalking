@@ -1,0 +1,25 @@
+slug: africastalking
+provider: Africa's Talking
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Airtime
+  spec_file: africastalking-airtime-api-openapi.yml
+  capability_id: BC-2660.20
+  capability_id_l1: BC-2660
+  capability_name: Charging & Rating Management
+  confidence: 0.8
+  evidence: POST /airtime/send "Send airtime" — reach "mobile subscribers across Kenya, Nigeria, Uganda..."
+    through "carrier integrations"
+  reason: Sending airtime to mobile subscribers is prepaid balance top-up/recharge executed through carrier
+    integrations, which is charging, balance management and recharge in telecom billing.

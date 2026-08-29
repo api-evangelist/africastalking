@@ -239,6 +239,9 @@ apis:
   - type: APIReference
     url: https://developers.africastalking.com/docs/payments/mobile_c2b/checkout
 common:
+- type: CapabilityMap
+  url: capabilities/africastalking-capability-edges.yml
+  name: Africa's Talking Business Capability Map
 - type: AgenticAccess
   url: agentic-access/africastalking-agentic-access.yml
 - type: DomainSecurity
