@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Africa's Talking Airtime Premium SMS API
-  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.'
+  title: Africa's Talking Premium SMS API
+  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B).'
   termsOfService: https://africastalking.com/terms
   contact:
     name: Africa's Talking Support
@@ -134,24 +134,6 @@ paths:
           description: List of subscriptions.
 components:
   schemas:
-    SubscriptionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: Success
-        description:
-          type: string
-          example: Waiting for user input
-    CheckoutTokenResponse:
-      type: object
-      properties:
-        description:
-          type: string
-          example: Success
-        token:
-          type: string
-          example: CkTkn_SampleCkTknId123
     SubscriptionRequest:
       type: object
       required:
@@ -174,6 +156,24 @@ components:
         checkoutToken:
           type: string
           description: Token returned by /checkout/token/create.
+    CheckoutTokenResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Success
+        token:
+          type: string
+          example: CkTkn_SampleCkTknId123
+    SubscriptionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: Success
+        description:
+          type: string
+          example: Waiting for user input
   securitySchemes:
     apiKey:
       type: apiKey

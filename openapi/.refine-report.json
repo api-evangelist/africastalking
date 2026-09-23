@@ -1,12 +1,7 @@
 {
   "provider": "africastalking",
   "sources": [
-    "africastalking-airtime-api-openapi.yml",
-    "africastalking-mobile-data-api-openapi.yml",
-    "africastalking-payments-api-openapi.yml",
-    "africastalking-premium-sms-api-openapi.yml",
-    "africastalking-sms-api-openapi.yml",
-    "africastalking-voice-api-openapi.yml"
+    "_original/africastalking-openapi.yml"
   ],
   "outputs": [
     "africastalking-airtime-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "africastalking-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "africastalking-airtime-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "africastalking-mobile-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "africastalking-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "africastalking-premium-sms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "africastalking-sms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "africastalking-voice-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

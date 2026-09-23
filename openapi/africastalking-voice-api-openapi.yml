@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Africa's Talking Airtime Voice API
-  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.'
+  title: Africa's Talking Voice API
+  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B).'
   termsOfService: https://africastalking.com/terms
   contact:
     name: Africa's Talking Support
@@ -106,6 +106,24 @@ paths:
           description: Media upload accepted.
 components:
   schemas:
+    MakeCallResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              phoneNumber:
+                type: string
+              status:
+                type: string
+                example: Queued
+              sessionId:
+                type: string
+        errorMessage:
+          type: string
+          example: None
     MakeCallRequest:
       type: object
       required:
@@ -126,24 +144,6 @@ components:
         clientRequestId:
           type: string
           description: Variable sent to your Events Callback URL for this call.
-    MakeCallResponse:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            type: object
-            properties:
-              phoneNumber:
-                type: string
-              status:
-                type: string
-                example: Queued
-              sessionId:
-                type: string
-        errorMessage:
-          type: string
-          example: None
   securitySchemes:
     apiKey:
       type: apiKey

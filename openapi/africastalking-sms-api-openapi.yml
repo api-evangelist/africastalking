@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Africa's Talking Airtime SMS API
-  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.'
+  title: Africa's Talking SMS API
+  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B).'
   termsOfService: https://africastalking.com/terms
   contact:
     name: Africa's Talking Support
@@ -76,6 +76,29 @@ paths:
                 $ref: '#/components/schemas/FetchMessagesResponse'
 components:
   schemas:
+    FetchMessagesResponse:
+      type: object
+      properties:
+        SMSMessageData:
+          type: object
+          properties:
+            Messages:
+              type: array
+              items:
+                type: object
+                properties:
+                  linkId:
+                    type: string
+                  text:
+                    type: string
+                  to:
+                    type: string
+                  id:
+                    type: integer
+                  date:
+                    type: string
+                  from:
+                    type: string
     SendMessageRequest:
       type: object
       required:
@@ -118,42 +141,6 @@ components:
         retryDurationInHours:
           type: integer
           description: Hours to retry premium SMS delivery before discarding.
-    SendMessageResponse:
-      type: object
-      properties:
-        SMSMessageData:
-          type: object
-          properties:
-            Message:
-              type: string
-              example: 'Sent to 1/1 Total Cost: KES 0.8000'
-            Recipients:
-              type: array
-              items:
-                $ref: '#/components/schemas/Recipient'
-    FetchMessagesResponse:
-      type: object
-      properties:
-        SMSMessageData:
-          type: object
-          properties:
-            Messages:
-              type: array
-              items:
-                type: object
-                properties:
-                  linkId:
-                    type: string
-                  text:
-                    type: string
-                  to:
-                    type: string
-                  id:
-                    type: integer
-                  date:
-                    type: string
-                  from:
-                    type: string
     Recipient:
       type: object
       properties:
@@ -172,6 +159,19 @@ components:
         messageId:
           type: string
           example: ATPid_SampleTxnId123
+    SendMessageResponse:
+      type: object
+      properties:
+        SMSMessageData:
+          type: object
+          properties:
+            Message:
+              type: string
+              example: 'Sent to 1/1 Total Cost: KES 0.8000'
+            Recipients:
+              type: array
+              items:
+                $ref: '#/components/schemas/Recipient'
   securitySchemes:
     apiKey:
       type: apiKey

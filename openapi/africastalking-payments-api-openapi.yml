@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Africa's Talking Airtime Payments API
-  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B). Requests authenticate with an `apiKey` header and a `username` parameter. Hosts differ per product: messaging, airtime, and subscriptions live under api.africastalking.com/version1; voice under voice.africastalking.com; mobile data under bundles.africastalking.com; and payments under payments.africastalking.com. Sandbox equivalents insert `.sandbox.` into each host.'
+  title: Africa's Talking Payments API
+  description: 'Unified REST API for Africa''s Talking communications products: SMS (single, bulk, premium, subscriptions), USSD callbacks, Voice (call, transfer, media upload, queue status), Airtime, Mobile Data, and Payments (mobile C2B checkout, B2C, B2B).'
   termsOfService: https://africastalking.com/terms
   contact:
     name: Africa's Talking Support
@@ -92,52 +92,66 @@ paths:
                 $ref: '#/components/schemas/MobileB2BResponse'
 components:
   schemas:
-    MobileB2BResponse:
+    MobileB2CResponse:
       type: object
       properties:
-        status:
+        numQueued:
+          type: integer
+          example: 1
+        totalValue:
           type: string
-          example: Queued
-        transactionId:
+          example: KES 100.0000
+        totalTransactionFee:
           type: string
-        transactionFee:
-          type: string
-        providerChannel:
-          type: string
-    MobileB2CRequest:
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              phoneNumber:
+                type: string
+              status:
+                type: string
+                example: Queued
+              provider:
+                type: string
+              providerChannel:
+                type: string
+              value:
+                type: string
+              transactionId:
+                type: string
+              transactionFee:
+                type: string
+    MobileCheckoutRequest:
       type: object
       required:
       - username
       - productName
-      - recipients
+      - phoneNumber
+      - currencyCode
+      - amount
       properties:
         username:
           type: string
         productName:
           type: string
-        recipients:
-          type: array
-          items:
-            type: object
-            required:
-            - phoneNumber
-            - currencyCode
-            - amount
-            properties:
-              phoneNumber:
-                type: string
-              currencyCode:
-                type: string
-                example: KES
-              amount:
-                type: number
-              reason:
-                type: string
-                description: Purpose of payment, e.g. SalaryPayment, BusinessPayment.
-              metadata:
-                type: object
-                additionalProperties:
-                  type: string
+        phoneNumber:
+          type: string
+          example: +254711XXXYYY
+        currencyCode:
+          type: string
+          description: 3-letter ISO currency code.
+          example: KES
+        amount:
+          type: number
+          example: 100.5
+        providerChannel:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
     MobileB2BRequest:
       type: object
       required:
@@ -175,35 +189,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    MobileCheckoutRequest:
-      type: object
-      required:
-      - username
-      - productName
-      - phoneNumber
-      - currencyCode
-      - amount
-      properties:
-        username:
-          type: string
-        productName:
-          type: string
-        phoneNumber:
-          type: string
-          example: +254711XXXYYY
-        currencyCode:
-          type: string
-          description: 3-letter ISO currency code.
-          example: KES
-        amount:
-          type: number
-          example: 100.5
-        providerChannel:
-          type: string
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
     MobileCheckoutResponse:
       type: object
       properties:
@@ -216,37 +201,52 @@ components:
         transactionId:
           type: string
           example: ATPid_SampleTxnId123
-    MobileB2CResponse:
+    MobileB2CRequest:
       type: object
+      required:
+      - username
+      - productName
+      - recipients
       properties:
-        numQueued:
-          type: integer
-          example: 1
-        totalValue:
+        username:
           type: string
-          example: KES 100.0000
-        totalTransactionFee:
+        productName:
           type: string
-        entries:
+        recipients:
           type: array
           items:
             type: object
+            required:
+            - phoneNumber
+            - currencyCode
+            - amount
             properties:
               phoneNumber:
                 type: string
-              status:
+              currencyCode:
                 type: string
-                example: Queued
-              provider:
+                example: KES
+              amount:
+                type: number
+              reason:
                 type: string
-              providerChannel:
-                type: string
-              value:
-                type: string
-              transactionId:
-                type: string
-              transactionFee:
-                type: string
+                description: Purpose of payment, e.g. SalaryPayment, BusinessPayment.
+              metadata:
+                type: object
+                additionalProperties:
+                  type: string
+    MobileB2BResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: Queued
+        transactionId:
+          type: string
+        transactionFee:
+          type: string
+        providerChannel:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey
