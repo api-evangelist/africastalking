@@ -48,6 +48,25 @@ paths:
                 $ref: '#/components/schemas/MobileDataResponse'
 components:
   schemas:
+    MobileDataResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              phoneNumber:
+                type: string
+              provider:
+                type: string
+              status:
+                type: string
+                example: Queued
+              transactionId:
+                type: string
+              value:
+                type: string
     MobileDataRequest:
       type: object
       required:
@@ -91,25 +110,6 @@ components:
                 type: object
                 additionalProperties:
                   type: string
-    MobileDataResponse:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            type: object
-            properties:
-              phoneNumber:
-                type: string
-              provider:
-                type: string
-              status:
-                type: string
-                example: Queued
-              transactionId:
-                type: string
-              value:
-                type: string
   securitySchemes:
     apiKey:
       type: apiKey

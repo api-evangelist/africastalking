@@ -99,6 +99,37 @@ components:
                     type: string
                   from:
                     type: string
+    SendMessageResponse:
+      type: object
+      properties:
+        SMSMessageData:
+          type: object
+          properties:
+            Message:
+              type: string
+              example: 'Sent to 1/1 Total Cost: KES 0.8000'
+            Recipients:
+              type: array
+              items:
+                $ref: '#/components/schemas/Recipient'
+    Recipient:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 101
+        number:
+          type: string
+          example: +254711XXXYYY
+        status:
+          type: string
+          example: Success
+        cost:
+          type: string
+          example: KES 0.8000
+        messageId:
+          type: string
+          example: ATPid_SampleTxnId123
     SendMessageRequest:
       type: object
       required:
@@ -141,37 +172,6 @@ components:
         retryDurationInHours:
           type: integer
           description: Hours to retry premium SMS delivery before discarding.
-    Recipient:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          example: 101
-        number:
-          type: string
-          example: +254711XXXYYY
-        status:
-          type: string
-          example: Success
-        cost:
-          type: string
-          example: KES 0.8000
-        messageId:
-          type: string
-          example: ATPid_SampleTxnId123
-    SendMessageResponse:
-      type: object
-      properties:
-        SMSMessageData:
-          type: object
-          properties:
-            Message:
-              type: string
-              example: 'Sent to 1/1 Total Cost: KES 0.8000'
-            Recipients:
-              type: array
-              items:
-                $ref: '#/components/schemas/Recipient'
   securitySchemes:
     apiKey:
       type: apiKey

@@ -92,6 +92,35 @@ paths:
                 $ref: '#/components/schemas/MobileB2BResponse'
 components:
   schemas:
+    MobileCheckoutRequest:
+      type: object
+      required:
+      - username
+      - productName
+      - phoneNumber
+      - currencyCode
+      - amount
+      properties:
+        username:
+          type: string
+        productName:
+          type: string
+        phoneNumber:
+          type: string
+          example: +254711XXXYYY
+        currencyCode:
+          type: string
+          description: 3-letter ISO currency code.
+          example: KES
+        amount:
+          type: number
+          example: 100.5
+        providerChannel:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
     MobileB2CResponse:
       type: object
       properties:
@@ -123,35 +152,30 @@ components:
                 type: string
               transactionFee:
                 type: string
-    MobileCheckoutRequest:
+    MobileB2BResponse:
       type: object
-      required:
-      - username
-      - productName
-      - phoneNumber
-      - currencyCode
-      - amount
       properties:
-        username:
+        status:
           type: string
-        productName:
+          example: Queued
+        transactionId:
           type: string
-        phoneNumber:
+        transactionFee:
           type: string
-          example: +254711XXXYYY
-        currencyCode:
-          type: string
-          description: 3-letter ISO currency code.
-          example: KES
-        amount:
-          type: number
-          example: 100.5
         providerChannel:
           type: string
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
+    MobileCheckoutResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: PendingConfirmation
+        description:
+          type: string
+          example: Waiting for user input
+        transactionId:
+          type: string
+          example: ATPid_SampleTxnId123
     MobileB2BRequest:
       type: object
       required:
@@ -189,18 +213,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    MobileCheckoutResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: PendingConfirmation
-        description:
-          type: string
-          example: Waiting for user input
-        transactionId:
-          type: string
-          example: ATPid_SampleTxnId123
     MobileB2CRequest:
       type: object
       required:
@@ -235,18 +247,6 @@ components:
                 type: object
                 additionalProperties:
                   type: string
-    MobileB2BResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: Queued
-        transactionId:
-          type: string
-        transactionFee:
-          type: string
-        providerChannel:
-          type: string
   securitySchemes:
     apiKey:
       type: apiKey
