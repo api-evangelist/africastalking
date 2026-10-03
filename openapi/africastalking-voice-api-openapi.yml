@@ -106,24 +106,6 @@ paths:
           description: Media upload accepted.
 components:
   schemas:
-    MakeCallResponse:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            type: object
-            properties:
-              phoneNumber:
-                type: string
-              status:
-                type: string
-                example: Queued
-              sessionId:
-                type: string
-        errorMessage:
-          type: string
-          example: None
     MakeCallRequest:
       type: object
       required:
@@ -144,6 +126,24 @@ components:
         clientRequestId:
           type: string
           description: Variable sent to your Events Callback URL for this call.
+    MakeCallResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              phoneNumber:
+                type: string
+              status:
+                type: string
+                example: Queued
+              sessionId:
+                type: string
+        errorMessage:
+          type: string
+          example: None
   securitySchemes:
     apiKey:
       type: apiKey
