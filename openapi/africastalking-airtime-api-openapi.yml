@@ -46,21 +46,6 @@ paths:
                 $ref: '#/components/schemas/SendAirtimeResponse'
 components:
   schemas:
-    SendAirtimeRequest:
-      type: object
-      required:
-      - username
-      - recipients
-      properties:
-        username:
-          type: string
-        recipients:
-          type: string
-          description: JSON-encoded array of recipient objects, each with phoneNumber, currencyCode, amount, and optional maxNumRetry.
-          example: '[{"phoneNumber":"+254711XXXYYY","currencyCode":"KES","amount":"100"}]'
-        maxNumRetry:
-          type: integer
-          description: Maximum delivery retries in hours on failure.
     SendAirtimeResponse:
       type: object
       properties:
@@ -93,6 +78,21 @@ components:
                 type: string
               errorMessage:
                 type: string
+    SendAirtimeRequest:
+      type: object
+      required:
+      - username
+      - recipients
+      properties:
+        username:
+          type: string
+        recipients:
+          type: string
+          description: JSON-encoded array of recipient objects, each with phoneNumber, currencyCode, amount, and optional maxNumRetry.
+          example: '[{"phoneNumber":"+254711XXXYYY","currencyCode":"KES","amount":"100"}]'
+        maxNumRetry:
+          type: integer
+          description: Maximum delivery retries in hours on failure.
   securitySchemes:
     apiKey:
       type: apiKey

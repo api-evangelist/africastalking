@@ -134,6 +134,15 @@ paths:
           description: List of subscriptions.
 components:
   schemas:
+    SubscriptionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: Success
+        description:
+          type: string
+          example: Waiting for user input
     SubscriptionRequest:
       type: object
       required:
@@ -165,15 +174,6 @@ components:
         token:
           type: string
           example: CkTkn_SampleCkTknId123
-    SubscriptionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: Success
-        description:
-          type: string
-          example: Waiting for user input
   securitySchemes:
     apiKey:
       type: apiKey
