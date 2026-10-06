@@ -44,7 +44,7 @@ tags:
 - Payments
 - Africa
 created: '2026-06-20'
-modified: '2026-06-20'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: africastalking:africastalking-airtime-api
@@ -240,6 +240,8 @@ apis:
   - type: APIReference
     url: https://developers.africastalking.com/docs/payments/mobile_c2b/checkout
 common:
+- url: https://africastalking.com/blog
+  type: Blog
 - type: CapabilityMap
   url: capabilities/africastalking-capability-edges.yml
   name: Africa's Talking Business Capability Map
