@@ -15,6 +15,26 @@ edges:
     matched_domain: africastalking.com
     detected_by: sweep-cpaas.py
     detected: '2026-10-12'
+- partner_name: Zendesk (own)
+  partner: zendesk
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.zendesk.com/marketplace/apps/support/239510/africa-s-talking-voice/
+  mirror_of: zendesk/integrations/zendesk-integration-edges.yml
+  apps:
+  - Africa's Talking Voice
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: Contact Center
 generated: '2026-10-12'
 method: searched
-checked: []
+checked:
+- zendesk/integrations/zendesk-integration-edges.yml
+source:
+- zendesk/integrations/zendesk-integration-edges.yml

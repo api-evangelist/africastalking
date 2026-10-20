@@ -20,5 +20,18 @@
     matched_domain: africastalking.com
     detected_by: sweep-cpaas.py
     detected: '2026-10-12'
-  status: pending-generation
+  status: not-a-workflow
+  arazzo: null
+- slug: africastalking-zendesk-own
+  label: Zendesk (own)
+  partner: zendesk
+  partner_name: Zendesk (own)
+  category: Contact Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.zendesk.com/marketplace/apps/support/239510/africa-s-talking-voice/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
   arazzo: null
