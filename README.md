@@ -1,4 +1,4 @@
-# Africa's Talking (africastalking)
+# Africa's Talking
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,164 +66,126 @@
 
 Africa's Talking is a pan-African communications platform that exposes a unified set of REST APIs for SMS, USSD, Voice, Airtime, Mobile Data, and Payments. Developers authenticate with an apiKey and username and reach mobile subscribers across Kenya, Nigeria, Uganda, Tanzania, Rwanda, and other African markets through carrier integrations.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/africastalking/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/africastalking/refs/heads/main/apis.yml)
+**Areas:** Communications · SMS · USSD · Voice · Airtime · Mobile Data · Payments · Africa
 
-## Tags
+## Africa's Talking on APIs.io
 
-- Communications
-- SMS
-- USSD
-- Voice
-- Airtime
-- Mobile Data
-- Payments
-- Africa
+Everything profiled for Africa's Talking is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/africastalking/](https://apis.io/providers/africastalking/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2026-06-20
-- **Modified:** 2026-06-20
+- [Africa's Talking Airtime API](https://apis.io/apis/africastalking/africastalking-airtime-api/) — Distribute mobile airtime to recipients.
+- [Africa's Talking Mobile Data API](https://apis.io/apis/africastalking/africastalking-mobile-data-api/) — Disburse mobile data bundles to recipients.
+- [Africa's Talking Payments API](https://apis.io/apis/africastalking/africastalking-payments-api/) — Mobile C2B checkout, B2C, and B2B mobile money transfers.
+- [Africa's Talking Premium SMS API](https://apis.io/apis/africastalking/africastalking-premium-sms-api/) — Premium SMS subscriptions and checkout tokens.
+- [Africa's Talking SMS API](https://apis.io/apis/africastalking/africastalking-sms-api/) — Send single and bulk SMS and fetch inbox messages.
+- [Africa's Talking Voice API](https://apis.io/apis/africastalking/africastalking-voice-api/) — Outbound calls, transfers, queue status, and media upload.
 
-## APIs
+### Published properties
 
-### Africa's Talking SMS API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Send single and bulk SMS, monetize content with premium SMS, manage premium subscriptions and checkout tokens, and fetch inbox messages via the messaging endpoint authenticated with apiKey and username headers.
+#### Agentic access (1)
 
-- **Human URL:** [https://developers.africastalking.com/docs/sms/overview](https://developers.africastalking.com/docs/sms/overview)
-- **Base URL:** `https://api.africastalking.com/version1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Africastalking Agentic Access](https://apis.io/agentic-access/africastalking/africastalking-agentic-access/)
 
-- SMS
-- Messaging
-- Bulk SMS
-- Premium SMS
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developers.africastalking.com/docs/sms/overview)
-- [API Reference](https://developers.africastalking.com/docs/sms/sending/bulk)
-- [OpenAPI](openapi/africastalking-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/africastalking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/africastalking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Africa's Talking API](https://apis.io/collections/africastalking/open-africastalking/)
+- [Africa's Talking Airtime API](https://apis.io/collections/africastalking/open-africastalking-airtime-api/)
+- [Africa's Talking Airtime Mobile Data API](https://apis.io/collections/africastalking/open-africastalking-mobile-data-api/)
+- [Africa's Talking Airtime Payments API](https://apis.io/collections/africastalking/open-africastalking-payments-api/)
+- [Africa's Talking Airtime Premium SMS API](https://apis.io/collections/africastalking/open-africastalking-premium-sms-api/)
+- [Africa's Talking Airtime SMS API](https://apis.io/collections/africastalking/open-africastalking-sms-api/)
+- [Africa's Talking Airtime Voice API](https://apis.io/collections/africastalking/open-africastalking-voice-api/)
 
-### Africa's Talking USSD API
+#### Security (2)
 
-Build interactive USSD menus driven by HTTP callbacks. Africa's Talking POSTs session state (sessionId, serviceCode, phoneNumber, text) to your callback URL and your response begins with CON to continue or END to terminate the session.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://developers.africastalking.com/docs/ussd/overview](https://developers.africastalking.com/docs/ussd/overview)
-- **Base URL:** `https://api.africastalking.com/version1`
+- [Africastalking Authentication](https://apis.io/security/africastalking/africastalking-authentication/)
+- [Africastalking Domain Security](https://apis.io/security/africastalking/africastalking-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- USSD
-- Menu
-- Sessions
+Published plans, tiers and prices.
 
-#### Properties
+- [Africastalking Plans Pricing](https://apis.io/plans/africastalking/africastalking-plans-pricing/)
 
-- [Documentation](https://developers.africastalking.com/docs/ussd/overview)
-- [OpenAPI](openapi/africastalking-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/africastalking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/africastalking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Africa's Talking Voice API
+Published request limits.
 
-Make outbound calls, transfer and queue calls, and upload media files. Incoming and outgoing calls trigger HTTP callbacks to which you respond with Voice XML actions such as Say, Play, GetDigits, Dial, Record, and Enqueue.
+- [Africastalking Rate Limits](https://apis.io/rate-limits/africastalking/africastalking-rate-limits/)
 
-- **Human URL:** [https://developers.africastalking.com/docs/voice/overview](https://developers.africastalking.com/docs/voice/overview)
-- **Base URL:** `https://voice.africastalking.com`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Voice
-- Call
-- IVR
+- [Africastalking Finops](https://apis.io/finops/africastalking/africastalking-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://developers.africastalking.com/docs/voice/overview)
-- [OpenAPI](openapi/africastalking-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/africastalking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/africastalking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Africa's Talking Airtime API
-
-Programmatically distribute mobile airtime to one or many recipients across supported African carriers, with per-recipient currency, amount, and retry control.
-
-- **Human URL:** [https://developers.africastalking.com/docs/airtime/overview](https://developers.africastalking.com/docs/airtime/overview)
-- **Base URL:** `https://api.africastalking.com/version1`
-
-#### Tags
-
-- Airtime
-- Top Up
-- Rewards
-
-#### Properties
-
-- [Documentation](https://developers.africastalking.com/docs/airtime/overview)
-- [API Reference](https://developers.africastalking.com/docs/airtime/sending)
-- [OpenAPI](openapi/africastalking-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/africastalking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/africastalking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Africa's Talking Mobile Data API
-
-Disburse mobile data bundles in bulk to subscribers, specifying quantity, unit (MB or GB), and validity (Day, Week, or Month) per recipient against a registered payment product.
-
-- **Human URL:** [https://developers.africastalking.com/docs/data/overview](https://developers.africastalking.com/docs/data/overview)
-- **Base URL:** `https://bundles.africastalking.com`
-
-#### Tags
-
-- Mobile Data
-- Bundles
-- Disbursement
-
-#### Properties
-
-- [Documentation](https://developers.africastalking.com/docs/data/overview)
-- [API Reference](https://developers.africastalking.com/docs/data/sending)
-- [OpenAPI](openapi/africastalking-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/africastalking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/africastalking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Africa's Talking Payments API
-
-Collect and disburse money over mobile money rails, including mobile C2B checkout, B2C disbursement to customers, and B2B business-to-business transfers, with per-country currency and metadata support.
-
-- **Human URL:** [https://developers.africastalking.com/docs/payments/overview](https://developers.africastalking.com/docs/payments/overview)
-- **Base URL:** `https://payments.africastalking.com`
-
-#### Tags
-
-- Payments
-- Mobile Money
-- B2C
-- B2B
-- Checkout
-
-#### Properties
-
-- [Documentation](https://developers.africastalking.com/docs/payments/overview)
-- [API Reference](https://developers.africastalking.com/docs/payments/mobile_c2b/checkout)
-- [OpenAPI](openapi/africastalking-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/africastalking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/africastalking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/AfricasTalkingLtd)
-- [LinkedIn](https://www.linkedin.com/company/africa-s-talking)
 - [Website](https://africastalking.com)
 - [Documentation](https://developers.africastalking.com)
-- [Plans](plans/africastalking-plans-pricing.yml)
-- [Rate Limits](rate-limits/africastalking-rate-limits.yml)
-- [Fin Ops](finops/africastalking-finops.yml)
+- [Blog](https://africastalking.com/blog)
+- [GitHub](https://github.com/AfricasTalkingLtd)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 21.9** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 48.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 15.5 |
+| Access clarity | 5.3 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.0** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/africastalking/](https://apis.io/providers/africastalking/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Africa's Talking: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/africastalking/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
