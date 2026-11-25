@@ -89,7 +89,7 @@ Each property below is a page on APIs.io carrying the machine-readable artifact 
 
 Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Africastalking Agentic Access](https://apis.io/agentic-access/africastalking/africastalking-agentic-access/)
+- [Africa's Talking Agentic Access](https://apis.io/agentic-access/africastalking/africastalking-agentic-access/)
 
 #### Collections (7)
 
@@ -103,30 +103,36 @@ Postman and Open Collection request collections.
 - [Africa's Talking Airtime SMS API](https://apis.io/collections/africastalking/open-africastalking-sms-api/)
 - [Africa's Talking Airtime Voice API](https://apis.io/collections/africastalking/open-africastalking-voice-api/)
 
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Africa's Talking API Rules](https://apis.io/rules/africastalking/africastalking-rules/)
+
 #### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Africastalking Authentication](https://apis.io/security/africastalking/africastalking-authentication/)
-- [Africastalking Domain Security](https://apis.io/security/africastalking/africastalking-domain-security/)
+- [Africa's Talking Authentication](https://apis.io/security/africastalking/africastalking-authentication/)
+- [Africa's Talking Domain Security](https://apis.io/security/africastalking/africastalking-domain-security/)
 
 #### Plans and pricing (1)
 
 Published plans, tiers and prices.
 
-- [Africastalking Plans Pricing](https://apis.io/plans/africastalking/africastalking-plans-pricing/)
+- [Africa's Talking Plans Pricing](https://apis.io/plans/africastalking/africastalking-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Africastalking Rate Limits](https://apis.io/rate-limits/africastalking/africastalking-rate-limits/)
+- [Africa's Talking Rate Limits](https://apis.io/rate-limits/africastalking/africastalking-rate-limits/)
 
 #### FinOps (1)
 
 What the API costs to run, by operation.
 
-- [Africastalking Finops](https://apis.io/finops/africastalking/africastalking-finops/)
+- [Africa's Talking Finops](https://apis.io/finops/africastalking/africastalking-finops/)
 
 ## Where to find this API
 
@@ -139,18 +145,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 21.9** — emerging · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 22.7** — emerging · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 66.1 |
 | Contract quality | 48.0 |
-| Contract governance | 0.0 |
-| Operational transparency | 10.5 |
+| Contract governance | 13.6 |
+| Operational transparency | 11.9 |
 | Developer ergonomics | 15.5 |
-| Access clarity | 5.3 |
+| Access clarity | 4.3 |
 
-**Agent readiness 20.4** — agent-aware
+**Agent readiness 22.7** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -166,15 +172,21 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Event Surface Described | — |
 | Agent Skills | — |
 | Well Known Catalog | — |
-| Consent Identity | — |
+| Consent Identity | signal |
 | Agent Card | — |
 | Dry Run Mode | — |
 | Delegated Identity | — |
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 10.0** — Telecommunications
+**Regulatory alignment 5.0** — Telecommunications
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/africastalking/](https://apis.io/providers/africastalking/).
 
